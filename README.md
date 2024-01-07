@@ -15,12 +15,12 @@ a specific color is complete the plotter fills in the shapes again by scanning a
 
 Comparing the pictures it is clear that there are some issues with the plotter, however, the main issue is that there is play in the 3D printed pen mount which allows the pen to wiggle which is what causes the gaps and inconsistencies. After this test, I decided to do a simpler image and added a rubber band to hold the pen in place. The result of this test is shown below and it is clear that the quality has improved drastically. In this test, because the pen was held still with the rubber band there were significantly fewer gaps between lines however the pen was shifted during the color change which caused the red and blue sections to be slightly misaligned.
 
-![IMG_3195](https://github.com/JoshCircenis/Plotter/assets/98178221/80edc9ea-5d0d-4f48-b512-92c84bea5149)
+![IMG_3195](https://github.com/JoshCircenis/Plotter/assets/98178221/a7ae2a94-38a5-4dc5-8ea1-3bc5ceff629c)
 
-Below are two time-lapses that show the plotter filling in the contours that it drew.
+Below are two timelapses that show the plotter filling in the contours that it drew.
 
-https://github.com/JoshCircenis/Plotter/assets/98178221/2f21bce7-6d20-4064-aa4e-8b9ea157857b
-https://github.com/JoshCircenis/Plotter/assets/98178221/0705cba8-064e-42a2-b8fe-a5bb3d929ae2
+https://github.com/JoshCircenis/Plotter/assets/98178221/42604f85-5eb2-468f-9a0f-de195db18688
+https://github.com/JoshCircenis/Plotter/assets/98178221/de6f580a-6379-4ae7-a3f3-dea68c25dd31
 
 ## Improvements
 Through the testing of this code, several issues have been discovered such as the pen not being locked in place, rough edges, and insignificant points. The issues with the pen not being locked in place or misalignment after switching colors is a problem for the test setup, but in the final design which will be drawing with a pastel paste the colors will switch automatically and the plotter head will be the sole purpose allowing for total precision whereas, in this setup, the pen is attached in a non-permanent 3D printed bracket which is the root of these issues. The next issue is rough edges, this issue stems from the fact that the G-Code is being generated from raster graphics and contains artifacts from this. I am currently working on a solution that will convert from raster to vector using a contour tracing algorithm and De Casteljau's algorithm to represent the contours as perfectly smooth bézier curves. This will give the images a significantly smoother look and should fix this problem. And finally, again because of the raster graphics and the current algorithm, the plotter will attempt to draw single-pixel dots that do not drastically affect the quality of the image and instead waste time. This problem can be solved with noise filtering such as a Gaussian filter, Median filter, or Bilateral filter to eliminate any insignificant single pixels contained within a larger body of pixels while still preserving the overall image.
